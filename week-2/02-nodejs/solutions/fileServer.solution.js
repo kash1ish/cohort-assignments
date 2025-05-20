@@ -27,13 +27,13 @@ app.get('/files', function (req, res) {
 });
 
 app.get('/file/:filename', function (req, res) {
-    const filepath = path.join(__dirname, './files/', req.params.filename);
+    const filepath = path.join(__dirname, './files/',req.params.filename);
 
     fs.readFile(filepath, 'utf8', (err, data) => {
     if (err) {
         return res.status(404).send('File not found');
     }
-    res.send(data);
+    res.status(200).send(data);
     });
 });
 
